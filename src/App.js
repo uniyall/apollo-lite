@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import Input from "./components/Input";
+import DropDown from "./components/DropDown";
+import TickerContext from "./utils/tickerContext";
+import { useState } from 'react';
 
 function App() {
+
+  const [tickerData, setTickerData] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TickerContext.Provider value={{
+      tickerData, 
+      setTickerData
+    }}>
+      <div className="flex flex-column w-3/4 p-7 mx-auto">
+        <Input />
+        <DropDown />
+      </div>
+    </TickerContext.Provider>
   );
 }
 
